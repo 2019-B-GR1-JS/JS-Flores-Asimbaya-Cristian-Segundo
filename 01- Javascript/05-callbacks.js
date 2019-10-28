@@ -122,4 +122,41 @@ console.log("Funcion Every local \n"+foEveryLocal(arreglo,(valorActual,Indice,ar
     return valorActual>7;
 }));
 
-//
+//Funcion Find
+
+function foFindLocal(arreglo, funcion) {
+
+    let resultado = -1;
+
+    for(let indiceInicial = 0; indiceInicial<arreglo.length; indiceInicial++){
+
+        if (indiceInicial == (funcion(arreglo[indiceInicial],indiceInicial,arreglo))) {
+            resultado = arreglo[indiceInicial];
+        }
+    }
+    return resultado;
+}
+
+console.log("Funcion Find local: "+foFindLocal(arreglo,(valorActual,Indice,arreglo)=>{
+    return valorActual=1;
+}));
+
+// FUNCION REDUCE
+
+function forReduceLocal(arreglo, funcion) {
+    let resultado = 0;
+
+    for(let indiceInicial = 0; indiceInicial<arreglo.length; indiceInicial++){
+        resultado +=arreglo[indiceInicial];
+        funcion(arreglo[indiceInicial],indiceInicial,arreglo);
+    }
+
+    return resultado;
+}
+
+console.log("Funcion Reduce local: "+forReduceLocal(arreglo,(valorInicial, valorActual,Indice,arreglo)=>{
+    return valorInicial+valorActual;
+}));
+
+
+

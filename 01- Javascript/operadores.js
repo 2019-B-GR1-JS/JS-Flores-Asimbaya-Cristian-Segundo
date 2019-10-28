@@ -76,6 +76,7 @@ console.log('respuestaMenoraDiez:', respuestaMenoresADiez);
             }
             );
 
+console.log("Respuesta Find 2 :"+respuestaFind2)
 
     const respuestaFindIndex =
         arreglo.findIndex(
@@ -94,5 +95,5 @@ console.log('respuestaMenoraDiez:', respuestaMenoresADiez);
         },0); // EL CERO ES EL VALOR INICIAL
     console.log(respuestaReduce);
 
-
+console.log("Respuesta del reduce: "+respuestaReduce)
     
