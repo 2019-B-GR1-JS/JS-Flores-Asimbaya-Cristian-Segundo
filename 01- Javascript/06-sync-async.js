@@ -142,15 +142,30 @@ console.log('Termina sincrono');
 // paso 1: poner la palabra ASYNC permite usar codigo sincrono dentro de la funcion
 // paso 2: para trasformar promesa -> sincrono usar la palabra "await"
 async function leerArchivoSync() {
-
-    try {
-        const contenido = await leerArchivo(nombreArchivo); // Devuelve una promesa,
+    try{
+        const contenido = await leerArchivo(nombreArchivo); // Promesa
         console.log(contenido);
-        console.log("Leimos con async y await");
-    }catch (e) {
-        console.log('Error', error);
+        console.log('LEIMOS CON ASYNC AWAIT');
+        return 1
+    }catch (error) {
+        console.error('Error ', error);
+        return 0
     }
-
 }
+
+leerArchivoSync()
+    .then(
+        (numero)=>{
+            console.log(numero); // 1
+        }
+    )
+    .catch(
+        (numero)=>{
+            console.log(numero); // 0
+        }
+    ); // PROMESA
+
+
+
 
 //Toda funcion que se usa con un async, se transforma en una promesa
