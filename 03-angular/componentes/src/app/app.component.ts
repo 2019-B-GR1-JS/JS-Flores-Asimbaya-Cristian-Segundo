@@ -7,6 +7,11 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'componentes';
+  fecha = new Date();
+  seuldo = 12.001;
+  universidad = 'Escuela Politecnica Nacional';
+
+
   arregloObjetos = [
     {
       id: 1, // number
@@ -39,7 +44,7 @@ export class AppComponent {
       ojos: undefined,
     }
   ]
-
+  
   imprimirSueldo(sueldo:string){
     console.log(sueldo);
   }
