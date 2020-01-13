@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Formularios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!------ TEMPLADE ----->
+  <!------ Importar modilo de formularios ----->
+  <!-- se se usa step para conseguir un formulario de numeros, ya no se puede usar
+  min legngth y maslength sino solo min y max-->
+  <form (ngSubmit)="crearUsuario(nombreInput)"
+        #usuarioFormularios="ngForm">
+    {{usuario.nombre}}
+    <!------ variable de template ----->
+
+    <ion-label>Nombre</ion-label>
+
+    <h1 #papa>papa</h1>
+
+    <ion-item>
+      <ion-input type="text"
+                 name="nombre"
+                 required
+                 placeholder="Ej: Adrian Eugez"
+                 title="Llenar el nombre"
+                 minlength="3"
+                 maxlength="10"
+                 [(ngModel)]="usuario.nombre"
+                 #nombreInput="ngModel"
+      >
+      </ion-input>
+    </ion-item>
+
+
+<!--
+    <p>Valid {{nombreInput.valid}}</p>
+    <p>Touch {{nombreInput.touched}}</p>
+    <p>Untouch {{nombreInput.untouched}}</p>
+    <p>Disable {{nombreInput.disabled}}</p>
+    <p>Enable {{nombreInput.enabled}}</p>
+    <p>Invalid {{nombreInput.invalid}}</p>
+    <p>Pristine {{nombreInput.pristine}}</p>
+    <p>Dirty {{nombreInput.dirty}}</p>
+    <p>Errors {{nombreInput.errors}}</p>
+    <pre>
+      {{nombreInput.errors | json}}
+    </pre>
+-->
+
+    <ion-item>
+      <ion-input type="text"
+                 name="correo"
+                 required
+                 email="true"
+                 placeholder="Ej: Cristianflores@gmail.com"
+                 title="Llenar correo"
+                 [(ngModel)]="usuario.correo"
+                 #correoInput="ngModel"
+      >
+      </ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-input type="numeric"
+                 name="edad"
+                 required
+                 placeholder="Ej: 19"
+                 pattern="[0-9]+"
+                 title="Llenar edad"
+                 [(ngModel)]="usuario.edad"
+                 #edadInput="ngModel"
+      >
+      </ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-input type="password"
+                 name="password"
+                 required
+                 pattern="[0-9]+"
+                 placeholder="Ej: claveSecreta123"
+                 title="Llenar contraseña"
+                 [(ngModel)]="usuario.password"
+                 #passwordInput="ngModel"
+      >
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Confirmar password</ion-label>
+      <ion-input type="password"
+                 name="passwordConfirmacion"
+                 required
+                 pattern="[0-9]+"
+                 placeholder="Ej: Cristianflores@gmail.com"
+                 title="Confirmar constraseña"
+                 [(ngModel)]="usuario.passwordConfirmacion"
+                 #passwordConfirmacionInput="ngModel"
+      >
+      </ion-input>
+    </ion-item>
+
+    <div *ngIf="passwordInput.touched && passwordConfirmacionInput.touched && passwordInput.dirty && passwordInput.dirty">
+
+      <p *ngIf="validarPasswordIguales()">
+        Las passwords no coinciden.
+      </p>
+
+
+    </div>
+
+
+    <!--<button [disabled]="usuarioFormularios.invalid">Aceptar</button>-->
+    <ion-button
+      [disabled]="usuarioFormularios.invalid && validarPasswordIguales() ||
+usuario.password === ''"
+    >Aceptar</ion-button>
+
+  </form>
+
+</ion-content>
